@@ -14,7 +14,7 @@ class Garden {
             plantName: plantName,
             spaceRequired: spaceRequired,
             ripe: false,
-            quantiy: 0,
+            quantity: 0,
         };
 
         this.plants.push(plant);
@@ -96,7 +96,7 @@ class Garden {
             plantsInGarden.push(plant.plantName);
         }
 
-        plantsInGarden.sort(a, (b) => a.localeCompare(b));
+        plantsInGarden.sort((a, b) => a.localeCompare(b));
 
         let storageReport;
 
@@ -110,11 +110,11 @@ class Garden {
             storageReport = `Plants in storage: ${storageReportArr.join(", ")}`;
         }
 
-        return (
-            `The garden has ${this.spaceAvailable} free space left.`,
-            `Plants in the garden: ${plantsInGarden.join(", ")}`,
-            storageReport
-        );
+        return `The garden has ${
+            this.spaceAvailable
+        } free space left.\nPlants in the garden: ${plantsInGarden.join(
+            ", "
+        )}\n${storageReport}`;
     }
 }
 
@@ -159,9 +159,16 @@ console.log("=================================");
 // console.log(myGarden.harvestPlant("apple"));
 // console.log(myGarden.harvestPlant("raspberry"));
 console.log("=================================");
+// console.log(myGarden.addPlant("apple", 20));
+// console.log(myGarden.addPlant("orange", 200));
+// console.log(myGarden.addPlant("raspberry", 10));
+// console.log(myGarden.ripenPlant("apple", 10));
+// console.log(myGarden.ripenPlant("orange", 1));
+// console.log(myGarden.harvestPlant("orange"));
 console.log(myGarden.addPlant("apple", 20));
 console.log(myGarden.addPlant("orange", 200));
 console.log(myGarden.addPlant("raspberry", 10));
 console.log(myGarden.ripenPlant("apple", 10));
 console.log(myGarden.ripenPlant("orange", 1));
 console.log(myGarden.harvestPlant("orange"));
+console.log(myGarden.generateReport());
