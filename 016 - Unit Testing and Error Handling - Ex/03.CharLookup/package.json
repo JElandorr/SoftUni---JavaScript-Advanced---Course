@@ -1,0 +1,15 @@
+{
+  "name": "03.charlookup",
+  "version": "1.0.0",
+  "description": "",
+  "main": "03CharLookup.js",
+  "scripts": {
+    "test": "mocha 03CharLookupTest.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.7"
+  }
+}

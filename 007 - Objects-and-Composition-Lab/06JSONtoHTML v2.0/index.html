@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>FromJSONToHTMLTable</title>
+        <style>
+            table,
+            th {
+                border: groove;
+                border-collapse: collapse;
+            }
+            td {
+                border: 1px solid black;
+            }
+            td,
+            th {
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper"></div>
+        <script>
+            function fromJSONToHTMLTable(input) {
+                //Write your code here
+                const data = JSON.parse(input);
+                console.log(data);
+
+                const divWrapper = document.getElementById("wrapper");
+
+                const header = Object.keys(data[0]);
+
+                const table = document.createElement("table");
+                const trHeader = document.createElement("tr");
+
+                header.forEach((cat) => {
+                    const th = document.createElement("th");
+                    th.textContent = cat;
+                    trHeader.appendChild(th);
+                });
+
+                console.log(header);
+
+                table.appendChild(trHeader);
+
+                data.forEach((element) => {
+                    const tr = document.createElement("tr");
+                    const tdElements = Object.values(element);
+
+                    tdElements.forEach((element) => {
+                        const td = document.createElement("td");
+                        td.textContent = element;
+                        tr.appendChild(td);
+                    });
+
+                    table.appendChild(tr);
+                });
+
+                divWrapper.appendChild(table);
+                console.log(divWrapper.innerHTML);
+
+                return divWrapper.innerHTML;
+                // data.forEach((element) => {});
+            }
+
+            // window.onload = function () {
+            //     let container = document.getElementById("wrapper");
+            //     container.innerHTML = fromJSONToHTMLTable([
+            //         '[{"Name":"Stamat","Price":5.5},{"Name":"Rumen","Price":6}]',
+            //     ]);
+            // };
+
+            window.onload = function () {
+                let container = document.getElementById("wrapper");
+                container.innerHTML = fromJSONToHTMLTable([
+                    `[{"Name":"Pesho",
+    "Score":4,
+    " Grade":8},
+   {"Name":"Gosho",
+    "Score":5,
+    " Grade":8},
+   {"Name":"Angel",
+    "Score":5.50,
+    " Grade":10}]`,
+                ]);
+            };
+
+            //             window.onload = fromJSONToHTMLTable(`[{"Name":"Stamat",
+            //     "Score":5.5},
+            //    {"Name":"Rumen",
+            //     "Score":6}]`);
+
+            //             window.onload = fromJSONToHTMLTable(`[{"Name":"Pesho",
+            //     "Score":4,
+            //     " Grade":8},
+            //    {"Name":"Gosho",
+            //     "Score":5,
+            //     " Grade":8},
+            //    {"Name":"Angel",
+            //     "Score":5.50,
+            //     " Grade":10}]`);
+        </script>
+    </body>
+</html>
